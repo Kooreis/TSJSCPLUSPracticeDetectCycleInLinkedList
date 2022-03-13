@@ -1,8 +1,15 @@
-function Node(value) {
-    this.value = value;
-    this.next = null;
-}
+LinkedList.prototype.hasCycle = function() {
+    let slow = this.head;
+    let fast = this.head;
 
-function LinkedList() {
-    this.head = null;
+    while(fast !== null && fast.next !== null) {
+        slow = slow.next;
+        fast = fast.next.next;
+
+        if(slow === fast) {
+            return true;
+        }
+    }
+
+    return false;
 }
